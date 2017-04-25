@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://raw.githubusercontent.com/enyo/dropzone/master/dist/dropzone.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<h1> Привет от сервера </h1>
+		<p> Не желаете загрузить файл?</p>
+		<form action="/upload"
+			class="dropzone"
+			id="my-awesome-dropzone"
+			enctype="multipart/form-data"
+			method="POST">
+			<input type="file" name="uploadcontent" />
+			<button type="submit"> Отправить </button>
+		</form>
+	</body>
+</html>
