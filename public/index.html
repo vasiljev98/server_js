@@ -1,19 +1,93 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> <!-- Optional theme -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> <!-- Latest compiled and minified JavaScript -->
 		<script src="https://raw.githubusercontent.com/enyo/dropzone/master/dist/dropzone.js"></script>
-		<title></title>
+		<title>Файловый сервер</title>
+<style type="text/css">
+
+.btn-primary:active, .btn-primary:focus {
+  outline: none !important;
+  
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+	
+</style>
+
+
 	</head>
 	<body>
-		<h1> Привет от сервера </h1>
-		<p> Не желаете загрузить файл?</p>
-		<form action="/upload"
-			class="dropzone"
-			id="my-awesome-dropzone"
-			enctype="multipart/form-data"
-			method="POST">
-			<input type="file" name="uploadcontent" />
-			<button type="submit"> Отправить </button>
-		</form>
+
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	        Курсовая работа Васильева Данилы, ИУ10-21
+	      </a>
+	    </div>
+	  </div>
+	</nav>
+<div class="container">
+	<div class="jumbotron" style="background-color:white;border-style:solid; border-width:1px; border-color:rgb(200,200,200)">
+	  <h1>Загрузка файлов на сервер</h1>
+	  <p> 
+	  Поскольку исходная верстка для данного способа была выбрана такой же, как и в «маскировочном», стили для кнопки и текстового поля для обоих способов также совпадают (за исключением, разве что, свойства cursor: pointer, которое, в данном случае, будет применяться к кнопке и текстовому полю). Стиль же input[type=file] можно взять тот же, что использовался в методе c применением элемента label, но в нем лучше вместо свойства opacity использовать visibility:
+
+.file_upload input[type=file]{
+    position: absolute;
+    top: 0;
+    visibility: hidden
+}
+
+
+Нужно больше стилей!
+
+Разумеется, в таком примитивном виде поле выбора файла вряд ли кого-то устроит, поэтому добавим дополнительные стили, которые сделают кнопку выбора файла, скажем, фиолетовой, добавят тени и т.д. Не забудем также добавить свой стиль для кнопки, когда на нее наведен курсор, стиль для нажатой кнопки, а еще добавим стиль для всего элемента, когда на нем находится фокус (будет применяться при помощи JavaScript):
+
+	  </p>
+	<form action="/upload"
+		class="dropzone"
+		id="my-awesome-dropzone"
+		enctype="multipart/form-data"
+		method="POST">    
+	<div class="input-group">
+				<span class="input-group-btn">
+			<button class="btn btn-primary" type="submit" style="margin-top:10px; width:100px"> Отправить </button>
+			</span>
+		<input type="file" name="uploadcontent" style="padding-top:15px; padding-left:15px"/>
+</div>
+	</form>
+
+
+	  <div class="input-group" style="margin-top:5px">
+	  	 <span class="input-group-btn">
+	  		 <button class="btn btn-primary download-button" style="width:100px">Загрузить</button>
+	  	</span>
+	    <input type="text" class="form-control download-input" style="width:300px" placeholder="Имя скачиваемого файла">
+	  </div>
+	 
+	  
+	 
+</div>
+
+</div>
+
+
 	</body>
+<script type="text/javascript">
+$('.download-button').on('click', function() {
+  var filename = $('.download-input').val();
+  window.location.href="/download/"+filename;
+});
+</script>	
+	
+	
 </html>
+
+
